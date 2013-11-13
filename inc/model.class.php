@@ -164,14 +164,18 @@ class CsvafModel {
     }
 
     // Advanced custom fields
-    if ($acf && method_exists($acf, 'get_field_groups')) {
-      $fieldgroups  = $acf->get_field_groups();
+	// Not sure how to use has_filter instead of methos_exists here..
+   if ($acf) {
+      $fieldgroups  = apply_filters('acf/get_field_groups');
 
       foreach ($fieldgroups as $fieldgroup) {
-        $rules  = $fieldgroup['location']['rules'];
+		$rules = apply_filters('acf/field_group/get_location', array(), $fieldgroup['id']);
         $passes = false;
 
         foreach ($rules as $rule) {
+			// the rule array is now an array of arrays so "unwrap" the rule for easier access
+			$rule = $rule[0];
+			
           if (
              'post_type' == $rule['param']
           && '==' == $rule['operator']
@@ -183,7 +187,9 @@ class CsvafModel {
         }
 
         if ($passes) {
-          foreach ($fieldgroup['fields'] as $field) {
+			// Field names and types no longer returned by get_field_groups as in acf v3
+			$groupFields = apply_filters('acf/field_group/get_fields', array(), $fieldgroup['id']);        
+ 			foreach ($groupFields as $field) {
             if (!in_array($field['type'], self::$ACFFIELDS)) continue;
 
             $type      = null;
