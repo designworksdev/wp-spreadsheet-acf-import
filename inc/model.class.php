@@ -520,5 +520,7 @@ ON ( `posts$posttype`.`ID` = `$columnname`.`post_id`
       update_field($key, $value, $postid);
       // update_post_meta($postid, $key, $value);
     }
+
+    do_action('acf_save_post', $postid);
   }
 }
