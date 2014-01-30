@@ -4,8 +4,8 @@ Plugin URI: https://github.com/thechurch/wp-spreadsheet-acf-import
 Author URI: http://thechurch.co.nz/
 Tags: import, spreadsheet, acf, csv
 Requires at least: 3.0.0
-Tested up to: 3.5.1
-Stable tag: 0.1.5
+Tested up to: 3.8.1
+Stable tag: 0.1.6
 License: MIT
 
 Import data from spreadsheets into posts with Advanced Custom Fields.
@@ -32,6 +32,9 @@ Click Upload and the posts will be created. A log is then generated if errors /
 warnings are produced.
 
 == Changelog ==
+
+= 0.1.6 =
+* Trigger acf_save_post on insert
 
 = 0.1.5 =
 * Ensure plugin works without valid acf version
