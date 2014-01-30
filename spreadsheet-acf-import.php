@@ -4,7 +4,7 @@
 Plugin Name: Spreadsheet + ACF Import
 Plugin URI: https://github.com/thechurch/wp-spreadsheet-acf-import
 Description: Import data from a spreadsheet file with advanced custom fields.
-Version: 0.1.6
+Version: 0.1.7
 Author: The Church
 Author URI: http://thechurch.co.nz/
 Plugin URI: https://github.com/thechurch/wp-spreadsheet-acf-import
